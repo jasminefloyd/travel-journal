@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+
+
 export default function Card({ item }) {
     return (
         <div className="card">
