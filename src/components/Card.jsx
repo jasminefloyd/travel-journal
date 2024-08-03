@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+const imgUrl = process.env.PUBLIC_URL + '/images/loc.png';
 
 export default function Card({ item }) {
   return (
@@ -6,7 +7,7 @@ export default function Card({ item }) {
       <img src={item.coverImg} alt={item.locationName} className="card--image" />
       <div className="card--infoArea">
         <div className="card--location">
-          <img src="public/images/loc.png" alt="Location icon" className="card--locationImg" /> 
+          <img src={imgUrl} alt="Location icon" className="card--locationImg" /> 
           <p className="country">{item.country}</p>
           <a href={item.gLink} className="card--gLink" target="_blank" rel="noopener noreferrer">
             View on Google Maps
