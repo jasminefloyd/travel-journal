@@ -22,7 +22,7 @@ export default function App() {
   }, []); 
 
   return (
-    <>
+    <div className='container'>
       <Navbar />
       <section className="cards-list">
         {isLoading ? (
@@ -34,6 +34,6 @@ export default function App() {
         )}
       </section>
       <Footer />
-    </>
+    </div>
   );
 }
