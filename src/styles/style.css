@@ -181,7 +181,7 @@ card
 }
 
 /* Media Queries */
-@media (min-width: 600px) {
+@media (max-width: 600px) {
   .card {
       flex-direction: row;
       height: 168px;
@@ -196,4 +196,9 @@ card
   .card--info {
       padding-left: 15px;
   }
+
+  .cards-list {
+    grid-template-columns: repeat(1, 1fr); /* 1 card per row for screens smaller than 480px */
+  }
+  
 }
