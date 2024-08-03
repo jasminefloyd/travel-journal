@@ -6,7 +6,7 @@ export default function Card({ item }) {
             <img src={item.coverImg} alt={item.locationName} className="card--image" />
             <div className='card--infoArea'>
                 <div className='card--location'>
-                    <img src={`./public/images/loc.png`} alt="location icon" className="card--locationImg" />
+                    <img src={`${process.env.PUBLIC_URL}/images/loc.png`} alt="location icon" className="card--locationImg" />
                     <p className='country'>{item.country}</p>
                     <a href={item.gLink} className='card--gLink'>View on Google Maps</a>
                 </div>
