@@ -2,40 +2,38 @@ import { useEffect, useState } from 'react';
 import Footer from './components/Footer';
 import Card from './components/Card';
 import Navbar from './components/Navbar';
-import { supabase } from './config/supabase'; // Adjust the path if necessary
+import { supabase } from './config/supabase'; 
 
 export default function App() {
-    const [travelData, setTravelData] = useState([]);
+  const [travelData, setTravelData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            let { data, error } = await supabase
-                .from('travelData')
-                .select('*');
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await supabase.from('travelData').select('*');
 
-            if (error) {
-                console.error('Error fetching data:', error);
-            } else {
-                setTravelData(data);
-            }
-        };
+      console.log("Fetched travel data:", data); 
 
-        fetchData();
-    }, []);
+      setTravelData(data || []);
+      setIsLoading(false);
+    };
 
-    const cards = travelData.map(item => (
-        <Card key={item.id} item={item} />
-    ));
+    fetchData(); 
+  }, []); 
 
-    return (
-        <>
-            <div>
-                <Navbar />
-                <section className="cards-list">
-                    {cards}
-                </section>
-            </div>
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Navbar />
+      <section className="cards-list">
+        {isLoading ? (
+          <p>Loading...</p> 
+        ) : (
+          travelData.map(item => (
+            <Card key={item.id || item.locationName} item={item} /> 
+          ))
+        )}
+      </section>
+      <Footer />
+    </>
+  );
 }
